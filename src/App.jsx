@@ -7,8 +7,8 @@ import "quill-image-uploader/dist/quill.imageUploader.min.css";
 Quill.register("modules/imageUploader", ImageUploader);
 
 // Get these from cloudinary account
-const CLOUDINARY_UPLOAD_PRESET = "";
-const CLOUDINARY_CLOUD_NAME = "";
+const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
 const modules = {
   // Editor toolbar options
@@ -56,6 +56,8 @@ function App() {
       />
 
       <button onClick={() => console.log(text)}>Submit</button>
+
+      <div style={{ marginTop: "20px" }}>{text && JSON.stringify(text)}</div>
     </>
   );
 }
